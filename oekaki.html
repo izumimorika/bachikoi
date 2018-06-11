@@ -1,3 +1,5 @@
+//落書きする元画像は’1005_1.jpeg’でテストしてます
+
 
 <!DOCTYPE html>
 <html lang="ja">
@@ -118,14 +120,6 @@ $(function(){
 		}
 	})
 
-	// // 白黒で再描画
-	// $("#bwButton").click(function() {
- 	// 	for(i = 0; i < lines.length; i++ ){
-	// 		lines[i].color = "black";
-	// 	}
-	// 	drawAll();
-	// })
-	// 画像を保存
 	$('#save').click(function(){
 			var img = $('<img>').attr({
 					width: 100,
@@ -133,12 +127,12 @@ $(function(){
 					src:canvas.toDataURL()
 			});
 			var link = $('<a>').attr({
-				href:canvas.toDataURL().replace('image/png', 'application/octet-stream'),
-				download: url=new Date().getTime() + '.png'
+				href:canvas.toDataURL().replace('image/png', 'application/octet-stream'), //画像変換
+				download: url=new Date().getTime() + '.png' //らくがきレイヤーの画像ファイル名
 			})
 
 			$('#gallery').append(link.append(img.addClass('thumbnail')))(function(){
-				canvas.clearRect(0, 0, 600, 480);
+				canvas.clearRect(0, 0, 600, 450);
 			});
 			　　
 	})
@@ -210,7 +204,7 @@ function drawAll(){
 <!-- <input type="button" id="bwButton" value="白黒で描画"> -->
 <input type="button" id="save" value="ギャラリーに追加">
 </form>
-<canvas id="myCanvas" width="600" height="480" style="background-image: url('1005_1.jpeg'); background-size: contain;"></canvas>
+<canvas id="myCanvas" width="600" height="450" style="background-image: url('1005_1.jpeg'); background-size: contain;"></canvas>
 <div id="gallery"></div>
 </body>
 
